@@ -36,6 +36,7 @@ var Endaufgabe;
             anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"]
         },
     ];
+    //[[antwortbla, antwortbla2,antwort],[ddgdg]] 
     //Div boxendeklarieren um classlist.add und remuve zu machen
     let katbox = document.querySelector("#kategoriebox");
     let frabox = document.querySelector("#frageseite");
@@ -45,7 +46,7 @@ var Endaufgabe;
     let frage = document.createElement("headline1");
     frage.classList.add(".frage");
     document.querySelector(".Frage").appendChild(frage);
-    /*Buttons für Antworten erstellen mit TS*/
+    //Buttons für Antworten erstellen mit TS
     let antwort1 = document.createElement("button");
     antwort1.classList.add('antwortfeld1');
     document.querySelector(".Antworten").appendChild(antwort1);
@@ -55,13 +56,27 @@ var Endaufgabe;
     let antwort3 = document.createElement("button");
     antwort3.classList.add('antwortfeld3');
     document.querySelector(".Antworten").appendChild(antwort3);
+    let weiter = document.createElement("button");
+    weiter.classList.add('weiterbtn');
+    weiter.innerHTML = "Weiter";
+    document.querySelector(".Weiter").appendChild(weiter);
+    let buttonsarr = [antwort1, antwort2, antwort3];
+    const shuffle = (buttonsarr) => {
+        let m = buttonsarr.length;
+        while (m) {
+            const i = Math.floor(Math.random() * m--);
+            [buttonsarr[m], buttonsarr[i]] = [buttonsarr[i], buttonsarr[m]];
+        }
+        return buttonsarr;
+    };
+    console.log(shuffle(buttonsarr));
     //auf den klick auf eine kategorie soll die klasse zugewiesen und entfernt werden.
     //document.querySelector("#htmlbtn").addEventListener('click',function(){})
     //html button wird geklickt also sollen die fragen aus HTML_Fragen geladen werden. 
     //dabei soll der index math.random sein damit die fragen zufällig ausgeschmissen werden.
     //if html button geklickt wird soll das passieren
     // if css button... und so weiter
-    let index = Math.floor(Math.random() * 4) + 1;
+    let index = Math.round(Math.random() * 4);
     document.querySelector('#htmlbtn').addEventListener('click', function () {
         //klasse entfernen und zuweisen
         katbox.classList.add('hidden');
@@ -96,15 +111,5 @@ var Endaufgabe;
         }
         setall;
     });
-    //let i = Math.floor(Math.random()*6)+1;
-    //document.querySelector("#mix").addEventListener('click',function(){
-    // audioliste = [];
-    // while(audioliste.length < 3) {
-    //let i = Math.floor(Math.random()*8)+1;
-    //audioliste.push(audiomix[i]);
-    //}
-    // function dosomething{ (
-    // if (antwort1.getElement ddEventListener('click', myButton1)
-    // window.alert) 
 })(Endaufgabe || (Endaufgabe = {}));
 //# sourceMappingURL=main.js.map
