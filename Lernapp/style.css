@@ -9,11 +9,8 @@ body {
     background-color: rgb(253, 155, 44);
 }
 
-#content{
-    font-family:Arial, Helvetica, sans-serif;
-    text-align: center;
-    padding: 20px;
-    background-color: rgb(253, 155, 44);
+header{
+    height: 40px;
 }
 
 .btn{
@@ -47,6 +44,15 @@ button{
     display: none ;
 }
 
+/*#kategoriebox {
+    height: 400px;
+    display: inline-flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    flex-direction: column;
+
+}*/
+
 #frageseite{
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
@@ -57,12 +63,23 @@ button{
     font-size: 25px;
     background-color: aliceblue;
     width: 320;
-    height: 250px;
+    height: 240px;
+    border-radius: 10px;
+    word-wrap: break-word;
 }
 
 #Antwortboxen{
     display:inline-flex;
     flex-direction: column;
-    height: 230px;
+    height: 200px;
     justify-content: space-between;
+    cursor: pointer;
+}
+
+#weiter{
+    margin: 10px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+
 }
