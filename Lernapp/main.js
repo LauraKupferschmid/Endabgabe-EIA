@@ -2,6 +2,8 @@ var Endaufgabe;
 (function (Endaufgabe) {
     // Madeleine Hansen hat mich auf die Idee mit dem Interface gebracht
     //Interface für Fragen erstellen
+    let richtigbeantwortet = [];
+    let falschbeantwortet = [];
     //Fragen für HTML
     let HTML_Fragen = [
         {
@@ -36,8 +38,13 @@ var Endaufgabe;
             anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"]
         },
     ];
-    //[[antwortbla, antwortbla2,antwort],[ddgdg]] 
-    //Div boxendeklarieren um classlist.add und remuve zu machen
+    //Punkte counter wird erstellt 
+    let counter = document.createElement("paragragh");
+    counter.classList.add('hidden');
+    let rp = 0;
+    counter.innerHTML = "P: " + rp;
+    document.querySelector(".Counter").appendChild(counter);
+    //Div boxendeklarieren um classlist.add und remove zu machen
     let katbox = document.querySelector("#kategoriebox");
     let frabox = document.querySelector("#frageseite");
     //Kontrolle von TS_Fragen
@@ -49,67 +56,227 @@ var Endaufgabe;
     //Buttons für Antworten erstellen mit TS
     let antwort1 = document.createElement("button");
     antwort1.classList.add('antwortfeld1');
+    antwort1.setAttribute('id', 'antwort1');
     document.querySelector(".Antworten").appendChild(antwort1);
+    //Antworfeld 2 wird erstellet
     let antwort2 = document.createElement("button");
     antwort2.classList.add('antwortfeld2');
+    antwort2.setAttribute('id', 'antwort2');
     document.querySelector(".Antworten").appendChild(antwort2);
+    //Antwortfeld 3 wird erstellt
     let antwort3 = document.createElement("button");
     antwort3.classList.add('antwortfeld3');
+    antwort3.setAttribute('id', 'antwort3');
     document.querySelector(".Antworten").appendChild(antwort3);
+    //Weiter button wird erzeugt
     let weiter = document.createElement("button");
     weiter.classList.add('weiterbtn');
+    weiter.setAttribute('id', 'weiter');
     weiter.innerHTML = "Weiter";
     document.querySelector(".Weiter").appendChild(weiter);
-    let buttonsarr = [antwort1, antwort2, antwort3];
-    const shuffle = (buttonsarr) => {
-        let m = buttonsarr.length;
-        while (m) {
-            const i = Math.floor(Math.random() * m--);
-            [buttonsarr[m], buttonsarr[i]] = [buttonsarr[i], buttonsarr[m]];
-        }
-        return buttonsarr;
-    };
-    console.log(shuffle(buttonsarr));
     //auf den klick auf eine kategorie soll die klasse zugewiesen und entfernt werden.
     //document.querySelector("#htmlbtn").addEventListener('click',function(){})
     //html button wird geklickt also sollen die fragen aus HTML_Fragen geladen werden. 
     //dabei soll der index math.random sein damit die fragen zufällig ausgeschmissen werden.
     //if html button geklickt wird soll das passieren
     // if css button... und so weiter
+    //Fragen zufällig ausgeben
     let index = Math.round(Math.random() * 4);
+    //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
         //klasse entfernen und zuweisen
         katbox.classList.add('hidden');
         frabox.classList.remove('hidden');
-        // innerhtml zuweisen
-        frage.innerHTML = HTML_Fragen[0].question[index];
+        counter.classList.remove('hidden'),
+            // innerhtml zuweisen
+            frage.innerHTML = HTML_Fragen[0].question[index];
         antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
+        //Antwort eins wird geklickt
+        document.querySelector('#antwort1').addEventListener('click', function () {
+            if (HTML_Fragen[0].antworten_richtig) {
+                //alert für richtig
+                alert("wuhu");
+                rp++;
+                console.log(rp);
+                counter.innerHTML = "P: " + rp;
+                //buttons disalben
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+            ;
+        });
+        //Antwort zwei wird geklickt
+        document.querySelector('#antwort2').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false1) {
+                alert("hier könnte ihre erklärung stehen");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
+        //Antwort drei wird geklickt
+        document.querySelector('#antwort3').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false2) {
+                alert("wieder falsch");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
     });
+    //CSS button wird geklickt
     document.querySelector("#cssbtn").addEventListener('click', function () {
+        //classen zugewiesen und entfernt
         katbox.classList.add('hidden');
         frabox.classList.remove('hidden');
-        frage.innerHTML = CSS_Fragen[0].question[index];
+        counter.classList.remove('hidden'),
+            //inner html manipuliert
+            frage.innerHTML = CSS_Fragen[0].question[index];
         antwort1.innerHTML = CSS_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = CSS_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = CSS_Fragen[0].anwser_false2[index];
+        //Antwortbutton eins wird geklickt
+        document.querySelector('#antwort1').addEventListener('click', function () {
+            if (HTML_Fragen[0].antworten_richtig) {
+                alert("wuhu");
+                rp++;
+                console.log(rp);
+                counter.innerHTML = "P:" + rp;
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+            ;
+        });
+        //Antwortbutton zwei wird gedrückt
+        document.querySelector('#antwort2').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false1) {
+                alert("falsch weil");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
+        //Antwortbutton drei wirde gedrückt
+        document.querySelector('#antwort3').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false2) {
+                alert("wieder falsch");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
     });
+    //Typscriptbutton wurde geklickt
     document.querySelector("#tsbtn").addEventListener('click', function () {
+        //classen zugewiesen und entfernt
         katbox.classList.add('hidden');
         frabox.classList.remove('hidden');
-        frage.innerHTML = TS_Fragen[0].question[index];
+        counter.classList.remove('hidden'),
+            //inner html manipuliert
+            frage.innerHTML = TS_Fragen[0].question[index];
         antwort1.innerHTML = TS_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = TS_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = TS_Fragen[0].anwser_false2[index];
+        //Antwortbutton eins wird geklickt
+        document.querySelector('#antwort1').addEventListener('click', function () {
+            if (HTML_Fragen[0].antworten_richtig) {
+                alert("wuhu");
+                rp++;
+                console.log(rp);
+                counter.innerHTML = "P:" + rp;
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+            ;
+        });
+        //Antwortbutto zwei wird gedrückt
+        document.querySelector('#antwort2').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false1) {
+                alert("falsch weil");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
+        //Antwortbutto drei wird gedrückt
+        document.querySelector('#antwort3').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false2) {
+                alert("wieder falsch");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
     });
     document.querySelector("#gmbtn").addEventListener('click', function () {
         katbox.classList.add('hidden'),
-            frabox.classList.remove('hidden');
-        function setall() {
-            console.log("test hallo :)");
-        }
-        setall;
+            frabox.classList.remove('hidden'),
+            counter.classList.remove('hidden'),
+            function setall() {
+                console.log("test hallo :)");
+            };
+        document.querySelector('#antwort1').addEventListener('click', function () {
+            if (HTML_Fragen[0].antworten_richtig) {
+                alert("wuhu");
+                rp++;
+                console.log(rp);
+                counter.innerHTML = "P:" + rp;
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+            ;
+            while (rp < 5) {
+                if (rp < 5) {
+                    alert("bye");
+                }
+                /* else(rp = 5){
+                     alert("hi");
+                 }*/
+            }
+        });
+        document.querySelector('#antwort2').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false1) {
+                alert("falsch weil");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
+        document.querySelector('#antwort3').addEventListener('click', function () {
+            if (HTML_Fragen[0].anwser_false2) {
+                alert("wieder falsch");
+                antwort1.disabled = true;
+                antwort2.disabled = true;
+                antwort3.disabled = true;
+            }
+        });
     });
+    /*const buttonsarr = [antwort1,antwort2,antwort3]
+    
+    const shuffle = (buttonsarr)=>{
+        let m = buttonsarr.length;
+        while(m){
+            const i = Math.floor(Math.random()*m--);
+            [buttonsarr[m],buttonsarr[i]]=[buttonsarr[i],buttonsarr[m]]
+        }
+        return buttonsarr
+    }
+
+    const randshuff = shuffle(buttonsarr)
+
+    console.log(shuffle(buttonsarr))
+
+    const Antwortboxen = document.getElementById("#Antwortenboxen");
+    for (const buttonsarr of randshuff){
+        const button = document.createElement("button");
+        button.textContent= buttonsarr;
+        Antwortboxen.appendChild(button);
+    }*/
 })(Endaufgabe || (Endaufgabe = {}));
 //# sourceMappingURL=main.js.map
