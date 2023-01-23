@@ -97,7 +97,7 @@ namespace Endaufgabe {
     weiter.classList.add('weiterbtn');
     weiter.setAttribute('id','weiter');
     weiter.innerHTML = "Weiter";
-    document.querySelector(".Weiter").appendChild(weiter);
+    document.querySelector(".Weiterbuttonbox").appendChild(weiter);
     
     //auf den klick auf eine kategorie soll die klasse zugewiesen und entfernt werden.
     //document.querySelector("#htmlbtn").addEventListener('click',function(){})
@@ -109,6 +109,26 @@ namespace Endaufgabe {
     //Fragen zufällig ausgeben
     let index = Math.round(Math.random()*4);
 
+    function htmlfragen (){ 
+        frage.innerHTML = HTML_Fragen[0].question[index];
+        antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
+        antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
+        antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
+    }
+    function cssfragen (){ 
+        frage.innerHTML = CSS_Fragen[0].question[index];
+        antwort1.innerHTML = CSS_Fragen[0].antworten_richtig[index];
+        antwort2.innerHTML = CSS_Fragen[0].anwser_false1[index];
+        antwort3.innerHTML = CSS_Fragen[0].anwser_false2[index];
+    }
+    function tsfragen (){ 
+        frage.innerHTML = TS_Fragen[0].question[index];
+        antwort1.innerHTML = TS_Fragen[0].antworten_richtig[index];
+        antwort2.innerHTML = TS_Fragen[0].anwser_false1[index];
+        antwort3.innerHTML = TS_Fragen[0].anwser_false2[index];
+    }
+
+
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
         //klasse entfernen und zuweisen
@@ -116,10 +136,7 @@ namespace Endaufgabe {
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
         // innerhtml zuweisen
-        frage.innerHTML = HTML_Fragen[0].question[index];
-        antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
+        htmlfragen()
     
         //Antwort eins wird geklickt
         document.querySelector('#antwort1').addEventListener('click',function(){
@@ -133,6 +150,7 @@ namespace Endaufgabe {
                 antwort1.disabled = true;
                 antwort2.disabled = true;
                 antwort3.disabled = true;
+
             };
         });
         //Antwort zwei wird geklickt
@@ -151,6 +169,18 @@ namespace Endaufgabe {
                 antwort2.disabled = true;
                 antwort3.disabled = true;
             }});
+
+        document.querySelector('#weiter').addEventListener('click',function(){
+            while(rp < 5){
+                console.log("ich funktioniere")
+                htmlfragen()
+                }
+            
+                if(rp = 5){
+                alert("hi");
+                }
+        
+            })
     })
 
     //CSS button wird geklickt
@@ -160,10 +190,7 @@ namespace Endaufgabe {
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
         //inner html manipuliert
-        frage.innerHTML = CSS_Fragen[0].question[index];
-        antwort1.innerHTML = CSS_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = CSS_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = CSS_Fragen[0].anwser_false2[index];
+        cssfragen()
 
         //Antwortbutton eins wird geklickt
         document.querySelector('#antwort1').addEventListener('click',function(){
@@ -204,10 +231,7 @@ namespace Endaufgabe {
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
         //inner html manipuliert
-        frage.innerHTML = TS_Fragen[0].question[index];
-        antwort1.innerHTML = TS_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = TS_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = TS_Fragen[0].anwser_false2[index];
+        tsfragen()
     
         //Antwortbutton eins wird geklickt
         document.querySelector('#antwort1').addEventListener('click',function(){
@@ -258,15 +282,6 @@ namespace Endaufgabe {
                 antwort2.disabled = true;
                 antwort3.disabled = true;
             }; 
-            while (rp < 5) {
-                if(rp < 5){
-                    alert("bye");
-                }
-
-               /* else(rp = 5){
-                    alert("hi");
-                }*/
-            }
             });
         document.querySelector('#antwort2').addEventListener('click',function(){
             if(HTML_Fragen[0].anwser_false1){
@@ -283,6 +298,14 @@ namespace Endaufgabe {
                 antwort3.disabled = true;
             }});
     })
+
+
+    //wenn die frage richtig beantwortet wird wird sie vom grundarray ins richtig eantwortet arry verschoben
+    //wird die frage falsch gestellt blieibt sie entweder im grund array oder wird ins falsch beantwortet verschoben
+    //ist die funktion durch das grund array durch und die fünf punkte sind nicht errreicht wird das array mit den 
+    //falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht ein und die runde 
+    //beendet werden
+    //bei klick auf weiter wird eine neue zahlen 
 
     /*const buttonsarr = [antwort1,antwort2,antwort3]
     
