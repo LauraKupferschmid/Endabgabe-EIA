@@ -13,7 +13,7 @@ header{
     height: 40px;
 }
 
-.btn{
+.button{
     font-family:Arial, Helvetica, sans-serif;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -26,6 +26,7 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 255, 255);
     height: fit-content;
+    padding: 5px;
     position:fixed;
     bottom: 0px;
     left: 0px;
@@ -34,24 +35,34 @@ footer{
     width: 375px;
 }
 
-button{
+#antwort1 , #antwort2 , #antwort3 {
     padding: 15px 40px;
     font-size: 14px;
     color: black;
+    border-radius: 10px;
+    width: 200px;
+    align-content: center;
+}
+
+.katbtn{
+    padding: 15px 40px;
+    font-size: 14px;
+    color: black;
+    border-radius: 10px;
+    width: 160px;
+    align-content: center;
 }
 
 .hidden {
     display: none ;
 }
 
-/*#kategoriebox {
+#kategoriebox {
     height: 400px;
-    display: inline-flex;
-    justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 70px;
     flex-direction: column;
 
-}*/
+}
 
 #frageseite{
     font-family:Arial, Helvetica, sans-serif;
@@ -63,21 +74,23 @@ button{
     font-size: 25px;
     background-color: aliceblue;
     width: 320;
-    height: 240px;
+    height: 220px;
     border-radius: 10px;
     word-wrap: break-word;
+    padding: 15px;
+
 }
 
 #Antwortboxen{
     display:inline-flex;
     flex-direction: column;
-    height: 200px;
+    height: 180px;
     justify-content: space-between;
     cursor: pointer;
 }
 
-#weiter{
-    margin: 10px;
+#weiterbtnpingu{
+    margin-top: 17px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
