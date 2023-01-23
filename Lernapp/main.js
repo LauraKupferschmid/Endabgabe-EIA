@@ -144,8 +144,8 @@ var Endaufgabe;
         document.querySelector('#weiter').addEventListener('click', function () {
             while (rp < 5) {
                 console.log("ich funktioniere");
-                htmlfragen();
             }
+            weiter.disabled = false;
             if (rp = 5) {
                 alert("hi");
             }
