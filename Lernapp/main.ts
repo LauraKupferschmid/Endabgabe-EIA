@@ -170,16 +170,14 @@ namespace Endaufgabe {
                 antwort3.disabled = true;
             }});
 
-        document.querySelector('#weiter').addEventListener('click',function(){
-            while(rp < 5){
-                console.log("ich funktioniere")
-                htmlfragen()
-                }
-            
-                if(rp = 5){
+       document.querySelector('#weiter').addEventListener('click',function(){
+        while(rp < 5){
+                console.log("ich funktioniere")}
+                weiter.disabled= false;
+            if(rp = 5){
                 alert("hi");
                 }
-        
+
             })
     })
 
