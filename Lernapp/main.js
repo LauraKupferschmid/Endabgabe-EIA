@@ -121,133 +121,195 @@ var Endaufgabe;
                 antwort3.disabled = true;
             }
         });
-    });
-    //wieso , why , just work damn it
-    //fickt der scheiß button einfach alles
-    // und ich weiß nicht wieso
-    document.querySelector('#weiterbtnpingu').addEventListener('click', function () {
-        frage.innerHTML = HTML_Fragen[0].question[index];
-        antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
-        if (rp <= 5) {
-            console.log("ich funktioniere");
-        }
-        weiter.disabled = false;
-        if (rp == 5) {
+        document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+            if (rp < 5) {
+                console.log("ich funktioniere");
+                index = Math.round(Math.random() * 4);
+                htmlfragen();
+                antwort1.disabled = false;
+                antwort2.disabled = false;
+                antwort3.disabled = false;
+            }
+            weiter.disabled = false;
+            if (rp == 5) {
+                htmlfragen();
+                alert("hi");
+            }
+        });
+        //wieso , why , just work damn it
+        //fickt der scheiß button einfach alles
+        // und ich weiß nicht wieso
+        /*document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+        if(rp < 5) {
+                console.log("ich funktioniere")
+                index = Math.round(Math.random() * 4);
+                htmlfragen();
+                antwort1.disabled = false;
+                antwort2.disabled = false;
+                antwort3.disabled = false;
+            }
+            weiter.disabled = false;
+        if (rp == 5) { htmlfragen();
             alert("hi");
         }
-    });
-    document.querySelector("#cssbtn").addEventListener('click', function () {
-        katbox.classList.add('hidden'); //classen zugewiesen und entfernt
-        frabox.classList.remove('hidden');
-        counter.classList.remove('hidden'),
-            cssfragen(); //inner html manipuliert
-        document.querySelector('#antwort1').addEventListener('click', function () {
-            if (HTML_Fragen[0].antworten_richtig) {
-                alert("wuhu");
-                rp++;
-                console.log(rp);
-                counter.innerHTML = "P:" + rp;
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-            ;
-        });
-        document.querySelector('#antwort2').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false1) {
-                alert("falsch weil");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-        });
-        document.querySelector('#antwort3').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false2) {
-                alert("wieder falsch");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-        });
-    });
-    document.querySelector("#tsbtn").addEventListener('click', function () {
-        katbox.classList.add('hidden'); //klassen zugewiesen und entfernt
-        frabox.classList.remove('hidden');
-        counter.classList.remove('hidden'),
-            tsfragen(); //inner html manipuliert
-        document.querySelector('#antwort1').addEventListener('click', function () {
-            if (HTML_Fragen[0].antworten_richtig) {
-                alert("wuhu");
-                rp++;
-                console.log(rp);
-                counter.innerHTML = "P:" + rp;
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-            ;
-        });
-        document.querySelector('#antwort2').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false1) {
-                alert("falsch weil");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-        });
-        document.querySelector('#antwort3').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false2) {
-                alert("wieder falsch");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-        });
-    });
-    document.querySelector("#gmbtn").addEventListener('click', function () {
-        katbox.classList.add('hidden'),
-            frabox.classList.remove('hidden'),
+    
+    })*/
+        document.querySelector("#cssbtn").addEventListener('click', function () {
+            katbox.classList.add('hidden'); //classen zugewiesen und entfernt
+            frabox.classList.remove('hidden');
             counter.classList.remove('hidden'),
-            function setall() {
-                console.log("test hallo :)");
-            };
-        document.querySelector('#antwort1').addEventListener('click', function () {
-            if (HTML_Fragen[0].antworten_richtig) {
-                alert("wuhu");
-                rp++;
-                console.log(rp);
-                counter.innerHTML = "P:" + rp;
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
-            ;
+                cssfragen(); //inner html manipuliert
+            document.querySelector('#antwort1').addEventListener('click', function () {
+                if (HTML_Fragen[0].antworten_richtig) {
+                    alert("wuhu");
+                    rp++;
+                    console.log(rp);
+                    counter.innerHTML = "P:" + rp;
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+                ;
+            });
+            document.querySelector('#antwort2').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false1) {
+                    alert("falsch weil");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.querySelector('#antwort3').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false2) {
+                    alert("wieder falsch");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+                if (rp < 5) {
+                    console.log("ich funktioniere");
+                    index = Math.round(Math.random() * 4);
+                    cssfragen();
+                    antwort1.disabled = false;
+                    antwort2.disabled = false;
+                    antwort3.disabled = false;
+                }
+                weiter.disabled = false;
+                if (rp == 5) {
+                    htmlfragen();
+                    alert("hi");
+                }
+            });
         });
-        document.querySelector('#antwort2').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false1) {
-                alert("falsch weil");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
+        document.querySelector("#tsbtn").addEventListener('click', function () {
+            katbox.classList.add('hidden'); //klassen zugewiesen und entfernt
+            frabox.classList.remove('hidden');
+            counter.classList.remove('hidden'),
+                tsfragen(); //inner html manipuliert
+            document.querySelector('#antwort1').addEventListener('click', function () {
+                if (HTML_Fragen[0].antworten_richtig) {
+                    alert("wuhu");
+                    rp++;
+                    console.log(rp);
+                    counter.innerHTML = "P:" + rp;
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+                ;
+            });
+            document.querySelector('#antwort2').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false1) {
+                    alert("falsch weil");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.querySelector('#antwort3').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false2) {
+                    alert("wieder falsch");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+                if (rp < 5) {
+                    console.log("ich funktioniere");
+                    index = Math.round(Math.random() * 4);
+                    tsfragen();
+                    antwort1.disabled = false;
+                    antwort2.disabled = false;
+                    antwort3.disabled = false;
+                }
+                weiter.disabled = false;
+                if (rp == 5) {
+                    htmlfragen();
+                    alert("hi");
+                }
+            });
         });
-        document.querySelector('#antwort3').addEventListener('click', function () {
-            if (HTML_Fragen[0].anwser_false2) {
-                alert("wieder falsch");
-                antwort1.disabled = true;
-                antwort2.disabled = true;
-                antwort3.disabled = true;
-            }
+        document.querySelector("#gmbtn").addEventListener('click', function () {
+            katbox.classList.add('hidden'),
+                frabox.classList.remove('hidden'),
+                counter.classList.remove('hidden'),
+                function setall() {
+                    console.log("test hallo :)");
+                };
+            document.querySelector('#antwort1').addEventListener('click', function () {
+                if (HTML_Fragen[0].antworten_richtig) {
+                    alert("wuhu");
+                    rp++;
+                    console.log(rp);
+                    counter.innerHTML = "P:" + rp;
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+                ;
+            });
+            document.querySelector('#antwort2').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false1) {
+                    alert("falsch weil");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.querySelector('#antwort3').addEventListener('click', function () {
+                if (HTML_Fragen[0].anwser_false2) {
+                    alert("wieder falsch");
+                    antwort1.disabled = true;
+                    antwort2.disabled = true;
+                    antwort3.disabled = true;
+                }
+            });
+            document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+                if (rp < 5) {
+                    console.log("ich funktioniere");
+                    index = Math.round(Math.random() * 4);
+                    htmlfragen();
+                    antwort1.disabled = false;
+                    antwort2.disabled = false;
+                    antwort3.disabled = false;
+                }
+                weiter.disabled = false;
+                if (rp == 5) {
+                    htmlfragen();
+                    alert("hi");
+                }
+            });
         });
+        //wenn die frage richtig beantwortet wird wird sie vom grundarray ins richtig eantwortet arry verschoben
+        //wird die frage falsch gestellt blieibt sie entweder im grund array oder wird ins falsch beantwortet verschoben
+        //ist die funktion durch das grund array durch und die fünf punkte sind nicht errreicht wird das array mit den 
+        //falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht ein und die runde 
+        //beendet werden
+        //bei klick auf weiter wird eine neue zahlen 
     });
-    //wenn die frage richtig beantwortet wird wird sie vom grundarray ins richtig eantwortet arry verschoben
-    //wird die frage falsch gestellt blieibt sie entweder im grund array oder wird ins falsch beantwortet verschoben
-    //ist die funktion durch das grund array durch und die fünf punkte sind nicht errreicht wird das array mit den 
-    //falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht ein und die runde 
-    //beendet werden
-    //bei klick auf weiter wird eine neue zahlen 
 })(Endaufgabe || (Endaufgabe = {}));
 /*const buttonsarr = [antwort1,antwort2,antwort3]
   
@@ -269,5 +331,5 @@ var Endaufgabe;
       const button = document.createElement("button");
       button.textContent= buttonsarr;
       Antwortboxen.appendChild(button);
-  }*/ 
+  })*/ 
 //# sourceMappingURL=main.js.map
