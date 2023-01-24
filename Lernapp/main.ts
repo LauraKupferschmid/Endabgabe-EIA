@@ -153,25 +153,39 @@ namespace Endaufgabe {
             }
         });
 
+        document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+            if(rp < 5) {
+                    console.log("ich funktioniere")
+                    index = Math.round(Math.random() * 4);
+                    htmlfragen();
+                    antwort1.disabled = false;
+                    antwort2.disabled = false;
+                    antwort3.disabled = false;
+                }
+                weiter.disabled = false;
+            if (rp == 5) { htmlfragen();
+                alert("hi");
+            }
     })
 
     //wieso , why , just work damn it
     //fickt der scheiß button einfach alles
     // und ich weiß nicht wieso
-    document.querySelector('#weiterbtnpingu').addEventListener('click', function () {
-        frage.innerHTML = HTML_Fragen[0].question[index];
-            antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
-            antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
-            antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
-    if(rp <= 5) {
+    /*document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+    if(rp < 5) {
             console.log("ich funktioniere")
+            index = Math.round(Math.random() * 4);
+            htmlfragen();
+            antwort1.disabled = false;
+            antwort2.disabled = false;
+            antwort3.disabled = false;
         }
         weiter.disabled = false;
-    if (rp == 5) {
+    if (rp == 5) { htmlfragen();
         alert("hi");
     }
 
-})
+})*/
 
 document.querySelector("#cssbtn").addEventListener('click', function () {  //CSS button wird geklickt
     katbox.classList.add('hidden');//classen zugewiesen und entfernt
@@ -208,7 +222,25 @@ document.querySelector("#cssbtn").addEventListener('click', function () {  //CSS
             antwort3.disabled = true;
         }
     });
+
+
+    document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+        if(rp < 5) {
+                console.log("ich funktioniere")
+                index = Math.round(Math.random() * 4);
+                cssfragen();
+                antwort1.disabled = false;
+                antwort2.disabled = false;
+                antwort3.disabled = false;
+            }
+            weiter.disabled = false;
+        if (rp == 5) { htmlfragen();
+            alert("hi");
+        }
+    
+    })
 })
+
 
 document.querySelector("#tsbtn").addEventListener('click', function () {  //Typscriptbutton wurde geklickt
     katbox.classList.add('hidden');  //klassen zugewiesen und entfernt
@@ -245,6 +277,22 @@ document.querySelector("#tsbtn").addEventListener('click', function () {  //Typs
             antwort3.disabled = true;
         }
     });
+
+    document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+        if(rp < 5) {
+                console.log("ich funktioniere")
+                index = Math.round(Math.random() * 4);
+                tsfragen();
+                antwort1.disabled = false;
+                antwort2.disabled = false;
+                antwort3.disabled = false;
+            }
+            weiter.disabled = false;
+        if (rp == 5) { htmlfragen();
+            alert("hi");
+        }
+    
+    })
 })
 
 document.querySelector("#gmbtn").addEventListener('click', function () {    //Gemischtkategoriebutton wird geklickt
@@ -283,6 +331,22 @@ document.querySelector("#gmbtn").addEventListener('click', function () {    //Ge
             antwort3.disabled = true;
         }
     });
+
+    document.getElementById('weiterbtnpingu').addEventListener('click', function () {
+        if(rp < 5) {
+                console.log("ich funktioniere")
+                index = Math.round(Math.random() * 4);
+                htmlfragen();
+                antwort1.disabled = false;
+                antwort2.disabled = false;
+                antwort3.disabled = false;
+            }
+            weiter.disabled = false;
+        if (rp == 5) { htmlfragen();
+            alert("hi");
+        }
+    
+    })
 })
 
 
@@ -292,6 +356,8 @@ document.querySelector("#gmbtn").addEventListener('click', function () {    //Ge
     //falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht ein und die runde 
     //beendet werden
     //bei klick auf weiter wird eine neue zahlen 
+})
+
 }
 
 
@@ -315,4 +381,4 @@ document.querySelector("#gmbtn").addEventListener('click', function () {    //Ge
         const button = document.createElement("button");
         button.textContent= buttonsarr;
         Antwortboxen.appendChild(button);
-    }*/
+    })*/
