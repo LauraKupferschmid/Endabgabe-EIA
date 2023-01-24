@@ -8,6 +8,7 @@ namespace Endaufgabe {
         anwser_true: boolean[];
         anwser_false1: string[];
         anwser_false2: string[];
+        explanation: string[];
     }
 
     let richtigbeantwortet: Frage[] = [];
@@ -20,7 +21,8 @@ namespace Endaufgabe {
             antworten_richtig: ["antwort1", "antwort2", "antwort3", "antwort4", "antwort5"],
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["alphabet", "falscheant2", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"]
+            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ]
 
@@ -33,7 +35,8 @@ namespace Endaufgabe {
             antworten_richtig: ["antwort1", "antwort2 css", "antwort3", "antwort4", "antwort5"],
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["alphabet", "falscheant2 css lol", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort css again lol", "falsche ant3", "4te falsche an", "falsche die 5te"]
+            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort css again lol", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ]
 
@@ -46,7 +49,8 @@ namespace Endaufgabe {
             antworten_richtig: ["antwort1", "antwortts2", "antwort3", "antwort4", "antwort5"],
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["alphabet", "falscheantts2", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"]
+            anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ]
  
@@ -153,6 +157,9 @@ namespace Endaufgabe {
             }
         });
 
+         //wieso , why , just work damn it
+         //fickt der scheiß button einfach alles
+         // und ich weiß nicht wieso
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if(rp < 5) {
                     console.log("ich funktioniere")
@@ -168,24 +175,6 @@ namespace Endaufgabe {
             }
     })
 
-    //wieso , why , just work damn it
-    //fickt der scheiß button einfach alles
-    // und ich weiß nicht wieso
-    /*document.getElementById('weiterbtnpingu').addEventListener('click', function () {
-    if(rp < 5) {
-            console.log("ich funktioniere")
-            index = Math.round(Math.random() * 4);
-            htmlfragen();
-            antwort1.disabled = false;
-            antwort2.disabled = false;
-            antwort3.disabled = false;
-        }
-        weiter.disabled = false;
-    if (rp == 5) { htmlfragen();
-        alert("hi");
-    }
-
-})*/
 
 document.querySelector("#cssbtn").addEventListener('click', function () {  //CSS button wird geklickt
     katbox.classList.add('hidden');//classen zugewiesen und entfernt
