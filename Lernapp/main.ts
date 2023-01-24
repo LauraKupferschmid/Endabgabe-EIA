@@ -1,5 +1,6 @@
 namespace Endaufgabe {
 
+
     // Madeleine Hansen hat mich auf die Idee mit dem Interface gebracht
     //Interface für Fragen erstellen
     interface Frage {
@@ -11,8 +12,13 @@ namespace Endaufgabe {
         explanation: string[];
     }
 
-    let richtigbeantwortet: Frage[] = [];
-    let falschbeantwortet: Frage[] = []
+    var sound0: HTMLAudioElement = new Audio ('../Sound/A.mp3');
+    
+    function PlaySample(s) {
+        s.play()
+        }
+    //let richtigbeantwortet: Frage[] = [];
+    //let falschbeantwortet: Frage[] = []
 
     //Fragen für HTML
     let HTML_Fragen: Frage[] = [
@@ -157,6 +163,7 @@ namespace Endaufgabe {
 
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
+        PlaySample(sound0)
         katbox.classList.add('hidden');  //klasse entfernen und zuweisen
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
