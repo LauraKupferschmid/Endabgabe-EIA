@@ -127,7 +127,7 @@ namespace Endaufgabe {
                 alert("wuhu");  //alert für richtig
                 rp++;
                 console.log(rp);
-                counter.innerHTML = "P: " + rp;
+                counter.innerHTML ="P: " + rp;
                 antwort1.disabled = true;  //buttons disalben 
                 antwort2.disabled = true;
                 antwort3.disabled = true;
@@ -160,10 +160,10 @@ namespace Endaufgabe {
     // und ich weiß nicht wieso
     document.querySelector('#weiterbtnpingu').addEventListener('click', function () {
         frage.innerHTML = HTML_Fragen[0].question[index];
-        antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
-    if (rp <= 5) {
+            antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
+            antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
+            antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
+    if(rp <= 5) {
             console.log("ich funktioniere")
         }
         weiter.disabled = false;
