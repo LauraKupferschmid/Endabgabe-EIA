@@ -5,11 +5,11 @@ var Endaufgabe;
     //Fragen für HTML
     let HTML_Fragen = [
         {
-            question: ["wer ist besser htm", "FRage2html", "FRage3html", "Frage4 ht", "Frage5html"],
-            antworten_richtig: ["antwort1", "antwort2", "antwort3", "antwort4", "antwort5"],
+            question: ["Wofür werden Tags verwendet?", "Wie wird das semantische Skelett einer HTML bezeichnet?", "Was ist der DOM?", "Welches Element ist Bestandteil des DOMS?", "Was sind Attribute eines Tags?"],
+            antworten_richtig: ["Zur semantischen Strukturierung einer HTML.", "DOM.", "eine Daten-Schnittstelle für Browser und Seite", "Kind", "value"],
             anwser_true: [true, true, true, true, true],
-            anwser_false1: ["alphabet", "falscheant2", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            anwser_false1: ["Zum kommentieren des HTMLs.", "TS.", "ein Baum.", "Cousinen", "body"],
+            anwser_false2: ["Zum Erstellen des Typscripts", "JS.", "ein Dateiformat.", "Tochter", "img"],
             explanation: ["erklärungspingu1", "erklärungspingu2", "erklärungspingu3", "erklärungspingu4", "erklärungspingu der fünfte"],
         },
     ];
@@ -17,11 +17,11 @@ var Endaufgabe;
     //Fragen für CSS
     let CSS_Fragen = [
         {
-            question: ["wer ist besser css", "FRage2 css", "FRage3 css", "Frage4 css", "Frage5 css"],
-            antworten_richtig: ["antwort1", "antwort2 css", "antwort3", "antwort4", "antwort5"],
+            question: ["Wofür steht CSS", "Wofür wird CSS verwendet", "Welcher Tag wird verwendet um das HTML mit dem CSS zu verbinden?", "Mit welcher Klammer werden Anweisungen an CSS übergeben?", "Woraus besteht ein CSS Deklaration?"],
+            antworten_richtig: ["Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "()", "Eigenschaft und Wert"],
             anwser_true: [true, true, true, true, true],
-            anwser_false1: ["alphabet", "falscheant2 css lol", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere falsche anwort css again lol", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            anwser_false1: ["Color Styling Statistic", "zur Manipulation des DOMs.", "a", "[]", "Tag und href"],
+            anwser_false2: ["Command Style Sheet", "zur Manipulation des Browsers.", "p", "{}", "style und value"],
             explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ];
@@ -29,22 +29,22 @@ var Endaufgabe;
     //Fragen für Typescript
     let TS_Fragen = [
         {
-            question: ["wer ist besser", "FRagets2", "FRage3", "Frage4", "Frage5"],
-            antworten_richtig: ["antwort1", "antwortts2", "antwort3", "antwort4", "antwort5"],
+            question: ["Wie wird Javascript in HTML eingebunden?", "Welche Dateiendung muss das Dokument haben, das in das HTML eingebunden wird?", "Woraus besteht eine Deklaration?", "Welches dieser Antworten ist ein Typ von TS?", "Wie kann man die Skript-Ladereihenfolge verändern?"],
+            antworten_richtig: ["script-tag", ".js", "Schlüsselwort, Bezeichnung, Typ", "boolean", "defer"],
             anwser_true: [true, true, true, true, true],
-            anwser_false1: ["alphabet", "falscheantts2", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            anwser_false1: ["link-tag", ".ts", "Tags, links und Attributs", "age", "content"],
+            anwser_false2: ["a-tag", ".html", "Eigenschaft, Wert und Klammern", "parameter", ".log"],
             explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ];
     console.log(TS_Fragen[0].anwser_false2[3]); //Kontrolle von TS_Fragen
     let GM_Fragen = [
         {
-            question: ["wer ist besser", "FRagets2", "FRage3", "Frage4", "Frage5", "wer ist besser", "FRagets2", "FRage3", "Frage4", "Frage5", "wer ist besser", "FRagets2", "FRage3", "Frage4", "Frage5"],
-            antworten_richtig: ["antwort1", "antwortts2", "antwort3", "antwort4", "antwort5", "antwort1", "antwortts2", "antwort3", "antwort4", "antwort5", "antwort1", "antwortts2", "antwort3", "antwort4", "antwort5"],
+            question: ["Wofür werden Tags verwendet?", "Wie wird das semantische Skelett einer HTML bezeichnet?", "Was ist der DOM?", "Welches Element ist Bestandteil des DOMS?", "Was sind Attribute eines Tags?", "Wofür steht CSS?", "Wofür wird CSS verwendet?", "Welcher Tag wird verwendet um das HTML mit dem CSS zu verbinden?", "Mit welcher Klammer werden Anweisungen an CSS übergeben?", "Woraus besteht ein CSS Deklaration?", "Wie wird Javascript in HTML eingebunden?", "Welche Dateiendung muss das Dokument haben, das in das HTML eingebunden wird?", "Woraus besteht eine Deklaration?", "Welches dieser Antworten ist ein Typ von TS?", "Wie kann man die Skript-Ladereihenfolge verändern?"],
+            antworten_richtig: ["Zur semantischen Strukturierung einer HTML.", "DOM.", "eine Daten-Schnittstelle für Browser und Seite", "Kind", "value", "Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "()", "Eigenschaft und Wert", "script-tag", ".js", "Schlüsselwort, Bezeichnung, Typ", "boolean", "defer"],
             anwser_true: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
-            anwser_false1: ["alphabet", "falscheantts2", "falscheant3", "falscheant4", "falscheant5", "alphabet", "falscheantts2", "falscheant3", "falscheant4", "falscheant5", "alphabet", "falscheantts2", "falscheant3", "falscheant4", "falscheant5"],
-            anwser_false2: ["noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere ts falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            anwser_false1: ["Zum kommentieren des HTMLs.", "TS.", "ein Baum.", "Cousinen", "body", "Color Styling Statistic", "zur Manipulation des DOMs.", "a", "[]", "Tag und href", "link-tag", ".ts", "Tags, links und Attributs", "age", "content"],
+            anwser_false2: ["Zum Erstellen des Typscripts", "JS.", "ein Dateiformat.", "Tochter", "img", "Command Style Sheet", "zur Manipulation des Browsers.", "p", "{}", "style und value", "a-tag", ".html", "Eigenschaft, Wert und Klammern", "parameter", ".log"],
             explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
         },
     ];
@@ -56,6 +56,7 @@ var Endaufgabe;
     document.querySelector(".Counter").appendChild(counter);
     let katbox = document.querySelector("#kategoriebox"); //Div boxendeklarieren um classlist.add und remove zu machen
     let frabox = document.querySelector("#frageseite");
+    let antbox = document.querySelector('#Antwortboxen');
     let frage = document.createElement("headline1"); //Headline Element für Fragen erstellen mit TS
     frage.classList.add(".frage");
     document.querySelector(".Frage").appendChild(frage);
@@ -82,7 +83,7 @@ var Endaufgabe;
     //dabei soll der index math.random sein damit die fragen zufällig ausgeschmissen werden.
     //if html button geklickt wird soll das passieren
     // if css button... und so weiter
-    let index = Math.round(Math.random() * 4); //Fragen zufällig ausgeben
+    let index = Math.round(Math.random() * 4); //Fragen werden zufällig ausgeben
     function htmlfragen() {
         frage.innerHTML = HTML_Fragen[0].question[index];
         antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
@@ -106,6 +107,17 @@ var Endaufgabe;
         antwort1.innerHTML = GM_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = GM_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = GM_Fragen[0].anwser_false2[index];
+    }
+    let congrats = document.createElement("headline2");
+    congrats.setAttribute('id', 'endhead');
+    congrats.innerHTML = "Herzlichen Glückwunsch! <br> Runde Geschafft :)";
+    let endbtn = document.querySelector('#endbtn');
+    function endbcdone() {
+        frabox.classList.add('hidden');
+        antbox.classList.add('hidden');
+        weiter.classList.add('hidden');
+        endbtn.classList.remove('hidden');
+        document.querySelector('#end').appendChild(congrats);
     }
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
@@ -154,7 +166,8 @@ var Endaufgabe;
             }
             weiter.disabled = false;
             if (rp == 5) {
-                htmlfragen();
+                counter.innerHTML = rp + " von 5";
+                endbcdone();
                 alert("hi");
             }
         });
@@ -203,6 +216,8 @@ var Endaufgabe;
             }
             weiter.disabled = false;
             if (rp == 5) {
+                counter.innerHTML = rp + " von 5";
+                endbcdone();
                 alert("hi");
             }
         });
@@ -252,6 +267,8 @@ var Endaufgabe;
             ;
             weiter.disabled = false;
             if (rp == 5) {
+                counter.innerHTML = rp + " von 5";
+                endbcdone();
                 alert("hi");
             }
         });
@@ -300,6 +317,8 @@ var Endaufgabe;
             }
             weiter.disabled = false;
             if (rp == 5) {
+                counter.innerHTML = rp + " von 5";
+                endbcdone();
                 alert("hi");
             }
         });
