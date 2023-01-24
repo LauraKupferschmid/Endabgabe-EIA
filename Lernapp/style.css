@@ -49,7 +49,7 @@ footer{
     font-size: 14px;
     color: black;
     border-radius: 10px;
-    width: 200px;
+    width: 230px;
     align-content: center;
 }
 
@@ -83,18 +83,19 @@ footer{
     font-size: 25px;
     background-color: aliceblue;
     width: 320;
-    height: 200px;
+    max-height: 200px;
     border-radius: 10px;
     word-wrap: break-word;
-    padding: 15px;
+    padding: 30px;
     margin-top: 30px;
+    height: fit-content;
 
 }
 
 #Antwortboxen{
     display:inline-flex;
     flex-direction: column;
-    height: 180px;
+    height: 250px;
     justify-content: space-between;
     cursor: pointer;
 }
@@ -103,6 +104,38 @@ footer{
     margin-top: 17px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    padding: 5px;
+    padding: 10px;
+    position: fixed;
+    bottom: 50px;
+    left: 160px;
+    border-radius: 7px;
+}
 
+#endhead {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    position: fixed;
+    margin-top: 230px;
+    margin-left: -182px;
+    background-color: aliceblue;
+    border-radius: 15px;
+    padding: 30px 15px;
+}
+
+#endbtn{
+    padding: 15px;
+    margin-top: 400px;
+    border-radius: 10px;
+}
+
+#startbtn {
+    padding: 15px;
+    margin-top: 70px;
+    border-radius: 10px;
+}
+
+#para1{
+    text-align: center;
+    margin-top: 150px;
 }
