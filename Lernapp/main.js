@@ -121,6 +121,9 @@ var Endaufgabe;
                 antwort3.disabled = true;
             }
         });
+        //wieso , why , just work damn it
+        //fickt der scheiß button einfach alles
+        // und ich weiß nicht wieso
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
                 console.log("ich funktioniere");
@@ -136,24 +139,6 @@ var Endaufgabe;
                 alert("hi");
             }
         });
-        //wieso , why , just work damn it
-        //fickt der scheiß button einfach alles
-        // und ich weiß nicht wieso
-        /*document.getElementById('weiterbtnpingu').addEventListener('click', function () {
-        if(rp < 5) {
-                console.log("ich funktioniere")
-                index = Math.round(Math.random() * 4);
-                htmlfragen();
-                antwort1.disabled = false;
-                antwort2.disabled = false;
-                antwort3.disabled = false;
-            }
-            weiter.disabled = false;
-        if (rp == 5) { htmlfragen();
-            alert("hi");
-        }
-    
-    })*/
         document.querySelector("#cssbtn").addEventListener('click', function () {
             katbox.classList.add('hidden'); //classen zugewiesen und entfernt
             frabox.classList.remove('hidden');
