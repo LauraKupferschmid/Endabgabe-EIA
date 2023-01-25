@@ -1,9 +1,7 @@
 namespace Endaufgabe {
 
-
-    // Madeleine Hansen hat mich auf die Idee mit dem Interface gebracht
     //Interface für Fragen erstellen
-    interface Frage {
+    interface Frage {    // Madeleine Hansen hat mich auf die Idee mit dem Interface gebracht
         question: string[];
         antworten_richtig: string[];
         anwser_true: boolean[];
@@ -12,14 +10,18 @@ namespace Endaufgabe {
         explanation: string[];
     }
 
-    const sound0: HTMLAudioElement = new Audio ("./Sounds/A.mp3");
+    const sound0: HTMLAudioElement = new Audio ("./Sounds/A.mp3"); //sounddateien einbinden in ts um sie für addEventlistener zu verwenden
     
     function playsample(s) {
         s.play();
         }
 
-    //let richtigbeantwortet: Frage[] = [];
+    let richtigbeantwortet = [];
+    let richtgeantwort1 = [];
+    let falscheantwort1 = [];
+    let falscheantwort2 = [];
     //let falschbeantwortet: Frage[] = []
+ 
 
     //Fragen für HTML
     let HTML_Fragen: Frage[] = [
@@ -75,6 +77,20 @@ namespace Endaufgabe {
     ]
     console.log(GM_Fragen[0].anwser_false2[9]);
 
+    //idee zum shuffeln der antworten, funktioniert aber nicht und ich weiß nicht wieso
+   /* let buttonsarr: = [antwort1,antwort2,antwort3]
+  
+    const shuffle = (buttonsarr)=>{
+        let m = buttonsarr.length;
+        while(m){
+            const i = Math.floor(Math.random()*m--);
+            [buttonsarr[m],buttonsarr[i]]=[buttonsarr[i],buttonsarr[m]]
+        }
+        return buttonsarr}
+
+    const randshuff = shuffle(buttonsarr)
+  
+    console.log(shuffle(buttonsarr))*/
 
     let counter = document.createElement("paragragh"); //Punkte counter wird erstellt
     counter.classList.add('hidden');
@@ -90,19 +106,19 @@ namespace Endaufgabe {
     frage.classList.add(".frage")
     document.querySelector(".Frage").appendChild(frage);
 
-    let antwort1: HTMLButtonElement = document.createElement("button")  //Buttons für Antworten erstellen mit TS
+    let antwort1: HTMLButtonElement= document.createElement("button");  //Buttons für Antworten erstellen mit TS
     antwort1.classList.add('antwortfeld1');
-    antwort1.setAttribute('id', 'antwort1')
+    antwort1.setAttribute('id', 'antwort1');
     document.querySelector(".Antworten").appendChild(antwort1);
 
-    let antwort2: HTMLButtonElement = document.createElement("button")   //Antworfeld 2 wird erstellet
+    let antwort2: HTMLButtonElement = document.createElement("button"); //Antworfeld 2 wird erstellet
     antwort2.classList.add('antwortfeld2');
-    antwort2.setAttribute('id', 'antwort2')
+    antwort2.setAttribute('id', 'antwort2');
     document.querySelector(".Antworten").appendChild(antwort2);
 
-    let antwort3: HTMLButtonElement = document.createElement("button")   //Antwortfeld 3 wird erstellt
+    let antwort3: HTMLButtonElement = document.createElement("button");  //Antwortfeld 3 wird erstellt
     antwort3.classList.add('antwortfeld3');
-    antwort3.setAttribute('id', 'antwort3')
+    antwort3.setAttribute('id', 'antwort3');
     document.querySelector(".Antworten").appendChild(antwort3)
 
     let weiter: HTMLButtonElement = document.createElement("button");  //Weiter button wird erzeugt
@@ -111,28 +127,36 @@ namespace Endaufgabe {
     weiter.innerHTML = "Weiter";
     document.querySelector(".Weiterbuttonbox").appendChild(weiter);
 
-    //auf den klick auf eine kategorie soll die klasse zugewiesen und entfernt werden.
-    //document.querySelector("#htmlbtn").addEventListener('click',function(){})
-    //html button wird geklickt also sollen die fragen aus HTML_Fragen geladen werden. 
-    //dabei soll der index math.random sein damit die fragen zufällig ausgeschmissen werden.
-    //if html button geklickt wird soll das passieren
-    // if css button... und so weiter
 
-    let index = Math.round(Math.random() * 4); //Fragen werden zufällig ausgeben
+    //Was ich machen will:
+    //1. auf den klick auf eine kategorie soll die klasse zugewiesen und entfernt werden.
+    //   -document.querySelector("#htmlbtn").addEventListener('click',function(){})
+    //2. html button wird geklickt also sollen die fragen aus HTML_Fragen geladen werden. 
+    //   -dabei soll der index math.random sein damit die fragen zufällig ausgeschmissen werden.
+    //3. "if" html button geklickt wird soll das passieren
+    //   "if" css button... und so weiter
+    //4. wenn die frage richtig beantwortet wird wird sie vom grundarray ins richtig-beantwortet arry verschoben und rp erhöht sich um eins
+    //5. wird die frage falsch beantwortet, blieibt sie entweder im grundarray oder wird ins falsch beantwortet verschoben
+    //6. ist die funktion durch das grund array durch und die fünf punkte sind nicht erreicht wird das array mit den 
+    //   falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht sein und die runde beendet werden
+    //7. bei klick auf weiter wird eine neue zahlen von math random erzeugt und die neuen element aufgrufen
 
-    function htmlfragen() {
+    let index = Math.round(Math.random() * 4); //Index um Fragen zufällig auszugeben
+    let indmix = Math.round(Math.random() * 14);  // Index um Fragen für die Gemischt kategorie auszugeben
+
+    function htmlfragen() {         //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
         frage.innerHTML = HTML_Fragen[0].question[index];
         antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];
     }
-    function cssfragen() {
+    function cssfragen() {          //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
         frage.innerHTML = CSS_Fragen[0].question[index];
         antwort1.innerHTML = CSS_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = CSS_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = CSS_Fragen[0].anwser_false2[index];
     }
-    function tsfragen() {
+    function tsfragen() {           //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
         frage.innerHTML = TS_Fragen[0].question[index];
         antwort1.innerHTML = TS_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = TS_Fragen[0].anwser_false1[index];
@@ -141,18 +165,19 @@ namespace Endaufgabe {
     }
 
     function setall() {
-        frage.innerHTML = GM_Fragen[0].question[index];
-        antwort1.innerHTML = GM_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = GM_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = GM_Fragen[0].anwser_false2[index];
+        frage.innerHTML = GM_Fragen[0].question[indmix];
+        antwort1.innerHTML = GM_Fragen[0].antworten_richtig[indmix];
+        antwort2.innerHTML = GM_Fragen[0].anwser_false1[indmix];
+        antwort3.innerHTML = GM_Fragen[0].anwser_false2[indmix];
     }
 
+    // Text vom endscreen wenn die runde beendet wurde
     let congrats: HTMLElement =  document.createElement("headline2");
     congrats.setAttribute('id','endhead')
     congrats.innerHTML= "Herzlichen Glückwunsch! <br> Runde Geschafft :)";
 
+    //deklarierung des END Buttons
     let endbtn = document.querySelector('#endbtn')
-
 
     function endbcdone(){
         frabox.classList.add('hidden');
@@ -176,6 +201,24 @@ namespace Endaufgabe {
                 rp++;
                 console.log(rp);
                 counter.innerHTML = "P: " + rp;
+                richtigbeantwortet.push(HTML_Fragen[0].question[index]); 
+                richtgeantwort1.push(HTML_Fragen[0].antworten_richtig[index]);
+                falscheantwort1.push(HTML_Fragen[0].anwser_false1[index]);
+                falscheantwort2.push(HTML_Fragen[0].anwser_false2[index]);
+                //delete HTML_Fragen[0].question[index];
+                //delete HTML_Fragen[0].antworten_richtig[index];
+                //delete HTML_Fragen[0].anwser_false1[index];
+                //delete HTML_Fragen[0].anwser_false2[index];
+                //HTML_Fragen[0].question.length - index;
+                console.log(HTML_Fragen[0].question.length)
+                console.log(richtigbeantwortet);
+                console.log(richtgeantwort1);
+                console.log(falscheantwort1);
+                console.log(falscheantwort2);
+                //HTML_Fragen[0].question.splice(index)
+                //HTML_Fragen[0].anwser_true.splice(index)
+                //HTML_Fragen[0].anwser_false1.splice(index)
+                //HTML_Fragen[0].anwser_false2.splice(index)
                 antwort1.disabled = true;  //buttons disalben 
                 antwort2.disabled = true;
                 antwort3.disabled = true;
@@ -224,6 +267,7 @@ namespace Endaufgabe {
 
 
     document.querySelector('#cssbtn').addEventListener('click', function () {
+        playsample(sound0);
         katbox.classList.add('hidden');  //klasse entfernen und zuweisen
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
@@ -279,6 +323,7 @@ namespace Endaufgabe {
     })
 
     document.querySelector('#tsbtn').addEventListener('click', function () {
+        playsample(sound0);
         katbox.classList.add('hidden');  //klasse entfernen und zuweisen
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
@@ -334,6 +379,7 @@ namespace Endaufgabe {
     });
 
     document.querySelector("#gmbtn").addEventListener('click', function () {    //Gemischtkategoriebutton wird geklickt
+        playsample(sound0);
         katbox.classList.add('hidden');
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden');
@@ -389,36 +435,5 @@ namespace Endaufgabe {
         })
         })
 
-
-        //wenn die frage richtig beantwortet wird wird sie vom grundarray ins richtig eantwortet arry verschoben
-        //wird die frage falsch gestellt blieibt sie entweder im grund array oder wird ins falsch beantwortet verschoben
-        //ist die funktion durch das grund array durch und die fünf punkte sind nicht errreicht wird das array mit den 
-        //falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht ein und die runde 
-        //beendet werden
-        //bei klick auf weiter wird eine neue zahlen 
     }
 
-
-
-
-/*const buttonsarr = [antwort1,antwort2,antwort3]
-  
-  const shuffle = (buttonsarr)=>{
-      let m = buttonsarr.length;
-      while(m){
-          const i = Math.floor(Math.random()*m--);
-          [buttonsarr[m],buttonsarr[i]]=[buttonsarr[i],buttonsarr[m]]
-      }
-      return buttonsarr
-  }
-
-  const randshuff = shuffle(buttonsarr)
-
-  console.log(shuffle(buttonsarr))
-
-  const Antwortboxen = document.getElementById("#Antwortenboxen");
-  for (const buttonsarr of randshuff){
-      const button = document.createElement("button");
-      button.textContent= buttonsarr;
-      Antwortboxen.appendChild(button);
-  })*/
