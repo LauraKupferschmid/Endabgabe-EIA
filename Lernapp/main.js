@@ -1,7 +1,11 @@
 var Endaufgabe;
 (function (Endaufgabe) {
-    let richtigbeantwortet = [];
-    let falschbeantwortet = [];
+    const sound0 = new Audio("./Sounds/A.mp3");
+    function playsample(s) {
+        s.play();
+    }
+    //let richtigbeantwortet: Frage[] = [];
+    //let falschbeantwortet: Frage[] = []
     //Fragen für HTML
     let HTML_Fragen = [
         {
@@ -121,6 +125,7 @@ var Endaufgabe;
     }
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
+        playsample(sound0);
         katbox.classList.add('hidden'); //klasse entfernen und zuweisen
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
