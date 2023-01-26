@@ -8,8 +8,6 @@ namespace Endaufgabe {
         anwser_false1: string[];
         anwser_false2: string[];
         explanation: string[];}
-
-    //let falschbeantwortet: Frage[] = []
  
     let Gesamt_Fragen: Frage[] = [  //Fragen für HTML
         {
@@ -100,11 +98,13 @@ namespace Endaufgabe {
         antwort1.innerHTML = Gesamt_Fragen[0].antworten_richtig[index];
         antwort2.innerHTML = Gesamt_Fragen[0].anwser_false1[index];
         antwort3.innerHTML = Gesamt_Fragen[0].anwser_false2[index];}
+
     function cssfragen() {          //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
         frage.innerHTML = Gesamt_Fragen[1].question[index];
         antwort1.innerHTML = Gesamt_Fragen[1].antworten_richtig[index];
         antwort2.innerHTML = Gesamt_Fragen[1].anwser_false1[index];
         antwort3.innerHTML = Gesamt_Fragen[1].anwser_false2[index];}
+
     function tsfragen() {           //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
         frage.innerHTML = Gesamt_Fragen[2].question[index];
         antwort1.innerHTML = Gesamt_Fragen[2].antworten_richtig[index];
