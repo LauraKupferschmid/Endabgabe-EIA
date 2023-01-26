@@ -39,9 +39,7 @@ var Endaufgabe;
     const sound3 = new Audio("./Sounds/laugh-2.mp3");
     const sound4 = new Audio("./Sounds/laugh-1.mp3");
     let ni = 4;
-    let nigm = 14;
     let index = Math.round(Math.random() * (ni)); //Index um Fragen zufällig auszugeben
-    let indmix = Math.round(Math.random() * nigm); // Index um Fragen für die Gemischt kategorie auszugeben
     let gesi = Math.round(Math.random() * 2);
     let counter = document.createElement("paragragh"); //Punkte counter wird erstellt
     counter.classList.add('hidden');
@@ -95,10 +93,11 @@ var Endaufgabe;
         antwort3.innerHTML = Gesamt_Fragen[2].anwser_false2[index];
     }
     function setall() {
-        frage.innerHTML = Gesamt_Fragen[gesi].question[indmix];
-        antwort1.innerHTML = Gesamt_Fragen[gesi].antworten_richtig[indmix];
-        antwort2.innerHTML = Gesamt_Fragen[gesi].anwser_false1[indmix];
-        antwort3.innerHTML = Gesamt_Fragen[gesi].anwser_false2[indmix];
+        gesi = Math.round(Math.random() * 2);
+        frage.innerHTML = Gesamt_Fragen[gesi].question[index];
+        antwort1.innerHTML = Gesamt_Fragen[gesi].antworten_richtig[index];
+        antwort2.innerHTML = Gesamt_Fragen[gesi].anwser_false1[index];
+        antwort3.innerHTML = Gesamt_Fragen[gesi].anwser_false2[index];
     }
     function endbcdone() {
         frabox.classList.add('hidden');
@@ -284,19 +283,22 @@ var Endaufgabe;
         katbox.classList.add('hidden');
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden');
+        gesi = Math.round(Math.random() * 2);
         setall();
         weiter.disabled = true;
+        console.log(gesi);
+        console.log(index);
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].antworten_richtig) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[indmix]);
+                alert(Gesamt_Fragen[gesi].explanation[index]);
                 rp++;
                 counter.innerHTML = "P:" + rp;
-                Gesamt_Fragen[gesi].question.splice(indmix, 1); // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
-                Gesamt_Fragen[gesi].anwser_false1.splice(indmix, 1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
-                Gesamt_Fragen[gesi].antworten_richtig.splice(indmix, 1);
-                Gesamt_Fragen[gesi].anwser_false2.splice(indmix, 1);
-                nigm--;
+                Gesamt_Fragen[gesi].question.splice(index, 1); // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
+                Gesamt_Fragen[gesi].anwser_false1.splice(index, 1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                Gesamt_Fragen[gesi].antworten_richtig.splice(index, 1);
+                Gesamt_Fragen[gesi].anwser_false2.splice(index, 1);
+                ni--;
                 inaktive();
             }
             ;
@@ -304,21 +306,21 @@ var Endaufgabe;
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].anwser_false1) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[indmix]);
+                alert(Gesamt_Fragen[gesi].explanation[index]);
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].anwser_false2) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[indmix]);
+                alert(Gesamt_Fragen[gesi].explanation[index]);
                 inaktive();
             }
         });
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
                 playsample(sound2);
-                indmix = Math.round(Math.random() * nigm);
+                index = Math.round(Math.random() * ni);
                 setall();
                 aktive();
             }
@@ -335,6 +337,7 @@ var Endaufgabe;
         console.log("hallo");
         endscr.classList.add('hidden');
         startbox.classList.remove('hidden');
+        location.reload();
     });
 })(Endaufgabe || (Endaufgabe = {}));
 //# sourceMappingURL=main.js.map
