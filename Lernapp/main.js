@@ -1,6 +1,5 @@
 var Endaufgabe;
 (function (Endaufgabe) {
-    //let falschbeantwortet: Frage[] = []
     let Gesamt_Fragen = [
         {
             question: ["Wofür werden Tags verwendet?", "Wie wird das semantische Skelett einer HTML bezeichnet?", "Was ist der DOM?", "Welches Element ist Bestandteil des DOMS?", "Was sind Attribute eines Tags?"],
