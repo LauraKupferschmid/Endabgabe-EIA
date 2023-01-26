@@ -83,7 +83,7 @@ footer{
     font-size: 25px;
     background-color: aliceblue;
     width: 320;
-    max-height: 200px;
+    max-height: 190px;
     border-radius: 10px;
     word-wrap: break-word;
     padding: 30px;
@@ -95,7 +95,7 @@ footer{
 #Antwortboxen{
     display:inline-flex;
     flex-direction: column;
-    height: 250px;
+    height: 240px;
     justify-content: space-between;
     cursor: pointer;
 }
