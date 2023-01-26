@@ -9,17 +9,9 @@ namespace Endaufgabe {
         anwser_false2: string[];
         explanation: string[];}
 
-    const sound0: HTMLAudioElement = new Audio ("./Sounds/A.mp3"); //sounddateien einbinden in ts um sie für addEventlistener zu verwenden
-    const sound1: HTMLAudioElement = new Audio ("./Sounds/G.mp3");
-    const sound2: HTMLAudioElement = new Audio ("./Sounds/C.mp3");
-    const sound3: HTMLAudioElement = new Audio ("./Sounds/F.mp3")
-
-    function playsample(s) {
-        s.play();}
-
     //let falschbeantwortet: Frage[] = []
  
-    let HTML_Fragen: Frage[] = [  //Fragen für HTML
+    let Gesamt_Fragen: Frage[] = [  //Fragen für HTML
         {
             question: ["Wofür werden Tags verwendet?", "Wie wird das semantische Skelett einer HTML bezeichnet?", "Was ist der DOM?", "Welches Element ist Bestandteil des DOMS?", "Was sind Attribute eines Tags?"],
             antworten_richtig: ["Zur semantischen Strukturierung einer HTML.", "DOM.", "eine Daten-Schnittstelle für Browser und Seite", "Kind", "value"],
@@ -27,9 +19,7 @@ namespace Endaufgabe {
             anwser_false1: ["Zum kommentieren des HTMLs.", "TS.", "ein Baum.", "Cousinen", "body"],
             anwser_false2: ["Zum Erstellen des Typscripts", "JS.", "ein Dateiformat.", "Tochter", "img"],
             explanation: ["erklärungspingu1", "erklärungspingu2", "erklärungspingu3", "erklärungspingu4", "erklärungspingu der fünfte"],
-        }]
-
-    let CSS_Fragen: Frage[] = [ //Fragen für CSS
+        },
         {
             question: ["Wofür steht CSS", "Wofür wird CSS verwendet", "Welcher Tag wird verwendet um das HTML mit dem CSS zu verbinden?", "Mit welcher Klammer werden Anweisungen an CSS übergeben?", "Woraus besteht ein CSS Deklaration?"],
             antworten_richtig: ["Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "()", "Eigenschaft und Wert"],
@@ -37,9 +27,7 @@ namespace Endaufgabe {
             anwser_false1: ["Color Styling Statistic", "zur Manipulation des DOMs.", "a", "[]", "Tag und href"],
             anwser_false2: ["Command Style Sheet", "zur Manipulation des Browsers.", "p", "{}", "style und value"],
             explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
-        }]
-
-    let TS_Fragen: Frage[] = [  //Fragen für Typescript
+        },
         {
             question: ["Wie wird Javascript in HTML eingebunden?", "Welche Dateiendung muss das Dokument haben, das in das HTML eingebunden wird?", "Woraus besteht eine Deklaration?", "Welches dieser Antworten ist ein Typ von TS?", "Wie kann man die Skript-Ladereihenfolge verändern?"],
             antworten_richtig: ["script-tag", ".js", "Schlüsselwort, Bezeichnung, Typ", "boolean", "defer"],
@@ -47,18 +35,27 @@ namespace Endaufgabe {
             anwser_false1: ["link-tag", ".ts", "Tags, links und Attributs", "age", "content"],
             anwser_false2: ["a-tag", ".html", "Eigenschaft, Wert und Klammern", "parameter", ".log"],
             explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
-        }]
+        }
+    ]
 
-    let GM_Fragen: Frage[] = [
-        {
-            question: ["Wofür werden Tags verwendet?", "Wie wird das semantische Skelett einer HTML bezeichnet?", "Was ist der DOM?", "Welches Element ist Bestandteil des DOMS?", "Was sind Attribute eines Tags?","Wofür steht CSS?", "Wofür wird CSS verwendet?", "Welcher Tag wird verwendet um das HTML mit dem CSS zu verbinden?", "Mit welcher Klammer werden Anweisungen an CSS übergeben?", "Woraus besteht ein CSS Deklaration?","Wie wird Javascript in HTML eingebunden?", "Welche Dateiendung muss das Dokument haben, das in das HTML eingebunden wird?", "Woraus besteht eine Deklaration?", "Welches dieser Antworten ist ein Typ von TS?", "Wie kann man die Skript-Ladereihenfolge verändern?"],
-            antworten_richtig: ["Zur semantischen Strukturierung einer HTML.", "DOM.", "eine Daten-Schnittstelle für Browser und Seite", "Kind", "value","Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "()", "Eigenschaft und Wert","script-tag", ".js", "Schlüsselwort, Bezeichnung, Typ", "boolean", "defer"],
-            anwser_true: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
-            anwser_false1: ["Zum kommentieren des HTMLs.", "TS.", "ein Baum.", "Cousinen", "body","Color Styling Statistic", "zur Manipulation des DOMs.", "a", "[]", "Tag und href","link-tag", ".ts", "Tags, links und Attributs", "age", "content"],
-            anwser_false2: ["Zum Erstellen des Typscripts", "JS.", "ein Dateiformat.", "Tochter", "img","Command Style Sheet", "zur Manipulation des Browsers.", "p", "{}", "style und value","a-tag", ".html", "Eigenschaft, Wert und Klammern", "parameter", ".log"],
-            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te", "noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
-        }]
-    console.log(GM_Fragen[0].anwser_false2[9]);
+    let startbox = document.querySelector("#start")
+    let katbox = document.querySelector("#kategoriebox")  //Div boxendeklarieren um classlist.add und remove zu machen
+    let frabox = document.querySelector("#frageseite")
+    let antbox = document.querySelector('#Antwortboxen')
+    let endbtn = document.querySelector('#endbtn')
+    let endscr = document.querySelector('#done_finished')
+
+    const sound0: HTMLAudioElement = new Audio ("./Sounds/A.mp3"); //sounddateien einbinden in ts um sie für addEventlistener zu verwenden
+    const sound1: HTMLAudioElement = new Audio ("./Sounds/G.mp3");
+    const sound2: HTMLAudioElement = new Audio ("./Sounds/C.mp3");
+    const sound3: HTMLAudioElement = new Audio ("./Sounds/laugh-2.mp3");
+    const sound4: HTMLAudioElement = new Audio ("./Sounds/laugh-1.mp3")
+
+    let ni = 4;
+    let nigm =14;
+    let index = Math.round(Math.random() * (ni)); //Index um Fragen zufällig auszugeben
+    let indmix = Math.round(Math.random() * nigm);  // Index um Fragen für die Gemischt kategorie auszugeben
+    let gesi = Math.round(Math.random() * 2);
 
     let counter = document.createElement("paragragh"); //Punkte counter wird erstellt
     counter.classList.add('hidden');
@@ -66,9 +63,11 @@ namespace Endaufgabe {
     counter.innerHTML = "P: " + rp;
     document.querySelector(".Counter").appendChild(counter)
 
-    let katbox = document.querySelector("#kategoriebox")  //Div boxendeklarieren um classlist.add und remove zu machen
-    let frabox = document.querySelector("#frageseite")
-    let antbox = document.querySelector('#Antwortboxen')
+    // Text vom endscreen wenn die runde beendet wurde
+    let congrats: HTMLElement =  document.createElement("headline2");
+    congrats.setAttribute('id','endhead')
+    congrats.innerHTML= "Herzlichen Glückwunsch! <br> Runde Geschafft :)";
+    //deklarierung des END Buttons
 
     let frage: HTMLElement = document.createElement("headline1")  //Headline Element für Fragen erstellen mit TS
     frage.classList.add(".frage")
@@ -95,47 +94,38 @@ namespace Endaufgabe {
     weiter.innerHTML = "Weiter";
     document.querySelector(".Weiterbuttonbox").appendChild(weiter);
 
-    let ni = 4;
-    let nigm =14;
-    let index = Math.round(Math.random() * (ni)); //Index um Fragen zufällig auszugeben
-    let indmix = Math.round(Math.random() * nigm);  // Index um Fragen für die Gemischt kategorie auszugeben
+    function playsample(s) {
+        s.play();}
 
     function htmlfragen() {         //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
-        frage.innerHTML = HTML_Fragen[0].question[index];
-        antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = HTML_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = HTML_Fragen[0].anwser_false2[index];}
+        frage.innerHTML = Gesamt_Fragen[0].question[index];
+        antwort1.innerHTML = Gesamt_Fragen[0].antworten_richtig[index];
+        antwort2.innerHTML = Gesamt_Fragen[0].anwser_false1[index];
+        antwort3.innerHTML = Gesamt_Fragen[0].anwser_false2[index];}
     function cssfragen() {          //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
-        frage.innerHTML = CSS_Fragen[0].question[index];
-        antwort1.innerHTML = CSS_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = CSS_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = CSS_Fragen[0].anwser_false2[index];}
+        frage.innerHTML = Gesamt_Fragen[1].question[index];
+        antwort1.innerHTML = Gesamt_Fragen[1].antworten_richtig[index];
+        antwort2.innerHTML = Gesamt_Fragen[1].anwser_false1[index];
+        antwort3.innerHTML = Gesamt_Fragen[1].anwser_false2[index];}
     function tsfragen() {           //funktion um den inner.html der frage und antwortbutton elemente zu manipulieren
-        frage.innerHTML = TS_Fragen[0].question[index];
-        antwort1.innerHTML = TS_Fragen[0].antworten_richtig[index];
-        antwort2.innerHTML = TS_Fragen[0].anwser_false1[index];
-        antwort3.innerHTML = TS_Fragen[0].anwser_false2[index];}
+        frage.innerHTML = Gesamt_Fragen[2].question[index];
+        antwort1.innerHTML = Gesamt_Fragen[2].antworten_richtig[index];
+        antwort2.innerHTML = Gesamt_Fragen[2].anwser_false1[index];
+        antwort3.innerHTML = Gesamt_Fragen[2].anwser_false2[index];}
 
     function setall() {
-        frage.innerHTML = GM_Fragen[0].question[indmix];
-        antwort1.innerHTML = GM_Fragen[0].antworten_richtig[indmix];
-        antwort2.innerHTML = GM_Fragen[0].anwser_false1[indmix];
-        antwort3.innerHTML = GM_Fragen[0].anwser_false2[indmix];}
-
-    // Text vom endscreen wenn die runde beendet wurde
-    let congrats: HTMLElement =  document.createElement("headline2");
-    congrats.setAttribute('id','endhead')
-    congrats.innerHTML= "Herzlichen Glückwunsch! <br> Runde Geschafft :)";
-
-    //deklarierung des END Buttons
-    let endbtn = document.querySelector('#endbtn')
+        frage.innerHTML = Gesamt_Fragen[gesi].question[indmix];
+        antwort1.innerHTML = Gesamt_Fragen[gesi].antworten_richtig[indmix];
+        antwort2.innerHTML = Gesamt_Fragen[gesi].anwser_false1[indmix];
+        antwort3.innerHTML = Gesamt_Fragen[gesi].anwser_false2[indmix];}
 
     function endbcdone(){
         frabox.classList.add('hidden');
         antbox.classList.add('hidden');
         weiter.classList.add('hidden');
         endbtn.classList.remove('hidden');
-        document.querySelector('#end').appendChild(congrats)}
+        document.querySelector('#done_finished').appendChild(congrats)}
+
     function inaktive(){
         antwort1.disabled = true;
         antwort2.disabled = true;
@@ -146,6 +136,12 @@ namespace Endaufgabe {
         antwort2.disabled = false;
         antwort3.disabled = false;
         weiter.disabled= true;}
+
+    document.querySelector('#startbtn').addEventListener('click',function(){
+        katbox.classList.remove('hidden');  //klasse entfernen und zuweisen
+        startbox.classList.add('hidden');
+        playsample(sound4);
+    });
 
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
@@ -158,29 +154,29 @@ namespace Endaufgabe {
 
         document.querySelector('#antwort1').addEventListener('click', function () {   //Antwort eins wird geklickt
             playsample(sound1);
-            if (HTML_Fragen[0].antworten_richtig) {
-                alert(HTML_Fragen[0].explanation[index]);  //alert für richtig
+            if (Gesamt_Fragen[0].antworten_richtig) {
+                alert(Gesamt_Fragen[0].explanation[index]);  //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
-                HTML_Fragen[0].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
-                HTML_Fragen[0].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
-                HTML_Fragen[0].antworten_richtig.splice(index,1);
-                HTML_Fragen[0].anwser_false2.splice(index,1);
+                Gesamt_Fragen[0].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
+                Gesamt_Fragen[0].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                Gesamt_Fragen[0].antworten_richtig.splice(index,1);
+                Gesamt_Fragen[0].anwser_false2.splice(index,1);
                 ni--;
                 inaktive();    //buttons disalben 
                 };
         });
         document.querySelector('#antwort2').addEventListener('click', function () {   //Antwort zwei wird geklickt
-            if (HTML_Fragen[0].anwser_false1) {
+            if (Gesamt_Fragen[0].anwser_false1) {
                 playsample(sound1);
-                alert(HTML_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[0].explanation[index])
                 inaktive(); 
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {   //Antwort drei wird geklickt
-            if (HTML_Fragen[0].anwser_false2) {
+            if (Gesamt_Fragen[0].anwser_false2) {
                 playsample(sound1);
-                alert(HTML_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[0].explanation[index])
                 inaktive(); 
             }
         });
@@ -208,30 +204,30 @@ namespace Endaufgabe {
         weiter.disabled= true;
             cssfragen(); // innerhtml zuweisen
         document.querySelector('#antwort1').addEventListener('click', function () {   //Antwort eins wird geklickt
-            if (CSS_Fragen[0].antworten_richtig) {
+            if (Gesamt_Fragen[1].antworten_richtig) {
                 playsample(sound1);
-                alert(CSS_Fragen[0].explanation[index]);  //alert für richtig
+                alert(Gesamt_Fragen[1].explanation[index]);  //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
                 inaktive();    //buttons disalben 
-                CSS_Fragen[0].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
-                CSS_Fragen[0].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
-                CSS_Fragen[0].antworten_richtig.splice(index,1);
-                CSS_Fragen[0].anwser_false2.splice(index,1);
+                Gesamt_Fragen[1].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
+                Gesamt_Fragen[1].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                Gesamt_Fragen[1].antworten_richtig.splice(index,1);
+                Gesamt_Fragen[1].anwser_false2.splice(index,1);
                 ni--;
                 };
         });
         document.querySelector('#antwort2').addEventListener('click', function () {   //Antwort zwei wird geklickt
-            if (CSS_Fragen[0].anwser_false1) {
+            if (Gesamt_Fragen[1].anwser_false1) {
                 playsample(sound1);
-                alert(CSS_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[1].explanation[index])
                 inaktive();  
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {   //Antwort drei wird geklickt
-            if (CSS_Fragen[0].anwser_false2) {
+            if (Gesamt_Fragen[1].anwser_false2) {
                 playsample(sound1);
-                alert(CSS_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[1].explanation[index])
                 inaktive();  
             }
         });
@@ -259,30 +255,30 @@ namespace Endaufgabe {
         weiter.disabled= true;
         tsfragen(); // innerhtml zuweisen
              document.querySelector('#antwort1').addEventListener('click', function () {   //Antwort eins wird geklickt
-            if (TS_Fragen[0].antworten_richtig) {
+            if (Gesamt_Fragen[2].antworten_richtig) {
                 playsample(sound1);
-                alert(TS_Fragen[0].explanation[index]);  //alert für richtig
+                alert(Gesamt_Fragen[2].explanation[index]);  //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
                 inaktive();    //buttons disalben 
-                TS_Fragen[0].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
-                TS_Fragen[0].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
-                TS_Fragen[0].antworten_richtig.splice(index,1);
-                TS_Fragen[0].anwser_false2.splice(index,1);
+                Gesamt_Fragen[2].question.splice(index,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
+                Gesamt_Fragen[2].anwser_false1.splice(index,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                Gesamt_Fragen[2].antworten_richtig.splice(index,1);
+                Gesamt_Fragen[2].anwser_false2.splice(index,1);
                 ni--;
             };
         });
             document.querySelector('#antwort2').addEventListener('click', function () {   //Antwort zwei wird geklickt
-            if (TS_Fragen[0].anwser_false1) {
+            if (Gesamt_Fragen[2].anwser_false1) {
                 playsample(sound1);
-                alert(TS_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[2].explanation[index])
                 inaktive(); 
             }
         });
             document.querySelector('#antwort3').addEventListener('click', function () {   //Antwort drei wird geklickt
-            if (TS_Fragen[0].anwser_false2) {
+            if (Gesamt_Fragen[2].anwser_false2) {
                 playsample(sound1);
-                alert(TS_Fragen[0].explanation[index])
+                alert(Gesamt_Fragen[2].explanation[index])
                 inaktive();
             }
         });
@@ -310,30 +306,30 @@ namespace Endaufgabe {
         setall();
         weiter.disabled= true;
         document.querySelector('#antwort1').addEventListener('click', function () {  // Antwortfeld 1 wird geklickt
-            if (GM_Fragen[0].antworten_richtig) {
+            if (Gesamt_Fragen[gesi].antworten_richtig) {
                 playsample(sound1);
-                alert(GM_Fragen[0].explanation[indmix]);
+                alert(Gesamt_Fragen[gesi].explanation[indmix]);
                 rp++;
                 counter.innerHTML = "P:" + rp;
-                GM_Fragen[0].question.splice(indmix,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
-                GM_Fragen[0].anwser_false1.splice(indmix,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
-                GM_Fragen[0].antworten_richtig.splice(indmix,1);
-                GM_Fragen[0].anwser_false2.splice(indmix,1);
+                Gesamt_Fragen[gesi].question.splice(indmix,1);  // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
+                Gesamt_Fragen[gesi].anwser_false1.splice(indmix,1); //fragen aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                Gesamt_Fragen[gesi].antworten_richtig.splice(indmix,1);
+                Gesamt_Fragen[gesi].anwser_false2.splice(indmix,1);
                 nigm--;
                 inaktive();  
             };
         });
         document.querySelector('#antwort2').addEventListener('click', function () {  // Antwortfeld 2 wird geklickt
-            if (GM_Fragen[0].anwser_false1) {
+            if (Gesamt_Fragen[gesi].anwser_false1) {
                 playsample(sound1);
-                alert(GM_Fragen[0].explanation[indmix])
+                alert(Gesamt_Fragen[gesi].explanation[indmix])
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {  // Antwortfeld 3 wird geklickt
-                if (GM_Fragen[0].anwser_false2) {
+                if (Gesamt_Fragen[gesi].anwser_false2) {
                 playsample(sound1);
-                alert(GM_Fragen[0].explanation[indmix])
+                alert(Gesamt_Fragen[gesi].explanation[indmix])
                 inaktive();
             }
         });
@@ -351,6 +347,12 @@ namespace Endaufgabe {
                 alert("hi");
             }
         })
+        })
+        document.querySelector('#endbtn').addEventListener('click',function(){
+            playsample(sound3);
+            console.log("hallo")
+            endscr.classList.add('hidden')
+            startbox.classList.remove('hidden')
         })
 
     }
