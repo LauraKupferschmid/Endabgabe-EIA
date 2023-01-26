@@ -1,6 +1,9 @@
 var Endaufgabe;
 (function (Endaufgabe) {
     const sound0 = new Audio("./Sounds/A.mp3"); //sounddateien einbinden in ts um sie für addEventlistener zu verwenden
+    const sound1 = new Audio("./Sounds/G.mp3");
+    const sound2 = new Audio("./Sounds/C.mp3");
+    const sound3 = new Audio("./Sounds/F.mp3");
     function playsample(s) {
         s.play();
     }
@@ -110,8 +113,10 @@ var Endaufgabe;
     //6. ist die funktion durch das grund array durch und die fünf punkte sind nicht erreicht wird das array mit den 
     //   falsch beantworteten arrays angesprochen bis dieses leer ist, dann sollte 5 punkte erreicht sein und die runde beendet werden
     //7. bei klick auf weiter wird eine neue zahlen von math random erzeugt und die neuen element aufgrufen
-    let index = Math.round(Math.random() * 4); //Index um Fragen zufällig auszugeben
-    let indmix = Math.round(Math.random() * 14); // Index um Fragen für die Gemischt kategorie auszugeben
+    let ni = 4;
+    let nigm = 14;
+    let index = Math.round(Math.random() * ni); //Index um Fragen zufällig auszugeben
+    let indmix = Math.round(Math.random() * nigm); // Index um Fragen für die Gemischt kategorie auszugeben
     function htmlfragen() {
         frage.innerHTML = HTML_Fragen[0].question[index];
         antwort1.innerHTML = HTML_Fragen[0].antworten_richtig[index];
@@ -151,35 +156,44 @@ var Endaufgabe;
     }
     //html button wird geklickt, klassen werden hinzugefügt/entfernt und die fragen geladen
     document.querySelector('#htmlbtn').addEventListener('click', function () {
+        console.log(HTML_Fragen[0].question.length);
         playsample(sound0);
         katbox.classList.add('hidden'); //klasse entfernen und zuweisen
         frabox.classList.remove('hidden');
         counter.classList.remove('hidden'),
             htmlfragen(); // innerhtml zuweisen
         document.querySelector('#antwort1').addEventListener('click', function () {
+            playsample(sound1);
             if (HTML_Fragen[0].antworten_richtig) {
                 alert(HTML_Fragen[0].explanation[index]); //alert für richtig
                 rp++;
                 console.log(rp);
                 counter.innerHTML = "P: " + rp;
+                // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten fragen 
+                // aus dem array entfernt, damit nur falsch beantwortete Fragen wiederholt werden
+                //er entfent mir den index, passt aber nicht die array länge an, ich weiß nicht wie ich das undfined rauskrieg
                 richtigbeantwortet.push(HTML_Fragen[0].question[index]);
                 richtgeantwort1.push(HTML_Fragen[0].antworten_richtig[index]);
                 falscheantwort1.push(HTML_Fragen[0].anwser_false1[index]);
                 falscheantwort2.push(HTML_Fragen[0].anwser_false2[index]);
-                //delete HTML_Fragen[0].question[index];
+                //HTML_Fragen[0].question.splice(index,1);
+                //HTML_Fragen[0].antworten_richtig.splice(index,1);
+                //HTML_Fragen[0].anwser_false1.splice(index,1);
+                //HTML_Fragen[0].anwser_false2.splice(index,1);
                 //delete HTML_Fragen[0].antworten_richtig[index];
                 //delete HTML_Fragen[0].anwser_false1[index];
                 //delete HTML_Fragen[0].anwser_false2[index];
-                //HTML_Fragen[0].question.length - index;
+                //HTML_Fragen[0].question.length;
+                //HTML_Fragen[0].antworten_richtig.length;
+                //HTML_Fragen[0].anwser_false1.length;
+                //HTML_Fragen[0].anwser_false2.length;
                 console.log(HTML_Fragen[0].question.length);
+                //index = Math.round(Math.random() * ni);
+                //ni--;
                 console.log(richtigbeantwortet);
                 console.log(richtgeantwort1);
                 console.log(falscheantwort1);
                 console.log(falscheantwort2);
-                //HTML_Fragen[0].question.splice(index)
-                //HTML_Fragen[0].anwser_true.splice(index)
-                //HTML_Fragen[0].anwser_false1.splice(index)
-                //HTML_Fragen[0].anwser_false2.splice(index)
                 antwort1.disabled = true; //buttons disalben 
                 antwort2.disabled = true;
                 antwort3.disabled = true;
@@ -188,6 +202,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (HTML_Fragen[0].anwser_false1) {
+                playsample(sound1);
                 alert("hier könnte ihre erklärung stehen");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -196,6 +211,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (HTML_Fragen[0].anwser_false2) {
+                playsample(sound1);
                 alert("wieder falsch");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -206,6 +222,7 @@ var Endaufgabe;
         // und ich weiß nicht wieso
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
+                playsample(sound2);
                 console.log("ich funktioniere");
                 index = Math.round(Math.random() * 4);
                 htmlfragen();
@@ -229,6 +246,7 @@ var Endaufgabe;
             cssfragen(); // innerhtml zuweisen
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (CSS_Fragen[0].antworten_richtig) {
+                playsample(sound1);
                 alert(CSS_Fragen[0].explanation); //alert für richtig
                 rp++;
                 console.log(rp);
@@ -241,6 +259,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (CSS_Fragen[0].anwser_false1) {
+                playsample(sound1);
                 alert("hier könnte ihre erklärung stehen");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -249,6 +268,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (CSS_Fragen[0].anwser_false2) {
+                playsample(sound1);
                 alert("wieder falsch");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -257,6 +277,7 @@ var Endaufgabe;
         });
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
+                playsample(sound2);
                 console.log("ich funktioniere");
                 index = Math.round(Math.random() * 4);
                 cssfragen();
@@ -280,6 +301,7 @@ var Endaufgabe;
             tsfragen(); // innerhtml zuweisen
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (TS_Fragen[0].antworten_richtig) {
+                playsample(sound1);
                 alert(TS_Fragen[0].explanation); //alert für richtig
                 rp++;
                 console.log(rp);
@@ -292,6 +314,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (TS_Fragen[0].anwser_false1) {
+                playsample(sound1);
                 alert("hier könnte ihre erklärung stehen");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -300,6 +323,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (TS_Fragen[0].anwser_false2) {
+                playsample(sound1);
                 alert("wieder falsch");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -308,6 +332,7 @@ var Endaufgabe;
         });
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
+                playsample(sound2);
                 console.log("ich funktioniere");
                 index = Math.round(Math.random() * 4);
                 tsfragen();
@@ -332,6 +357,7 @@ var Endaufgabe;
         setall();
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (GM_Fragen[0].antworten_richtig) {
+                playsample(sound1);
                 alert("wuhu");
                 rp++;
                 console.log(rp);
@@ -344,6 +370,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (GM_Fragen[0].anwser_false1) {
+                playsample(sound1);
                 alert("falsch weil");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -352,6 +379,7 @@ var Endaufgabe;
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (GM_Fragen[0].anwser_false2) {
+                playsample(sound1);
                 alert("wieder falsch");
                 antwort1.disabled = true;
                 antwort2.disabled = true;
@@ -360,6 +388,7 @@ var Endaufgabe;
         });
         document.getElementById('weiterbtnpingu').addEventListener('click', function () {
             if (rp < 5) {
+                playsample(sound2);
                 console.log("ich funktioniere");
                 index = Math.round(Math.random() * 4);
                 setall();
