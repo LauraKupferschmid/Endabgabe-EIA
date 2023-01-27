@@ -7,15 +7,15 @@ var Endaufgabe;
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["Zum kommentieren des HTMLs.", "TS.", "ein Baum.", "Cousinen", "body"],
             anwser_false2: ["Zum Erstellen des Typscripts", "JS.", "ein Dateiformat.", "Tochter", "img"],
-            explanation: ["erklärungspingu1", "erklärungspingu2", "erklärungspingu3", "erklärungspingu4", "erklärungspingu der fünfte"],
+            explanation: ["Die Tags werden in HTML zur semantischen Strukturierung genutzt https://www.mediaevent.de/html/", "Das Skelett eines HTMLs nennt man DOM. https://www.w3schools.com/whatis/whatis_htmldom.asp", "Der DOM ist eine Datenschnittstelle für den Browser und der HTML-Seite. https://de.ryte.com/wiki/Document_Object_Model", "Das Childelement (Kindelement) ist ein Element des DOMs https://wiki.selfhtml.org/wiki/JavaScript/DOM", "Attribute sind Gestaltungsmerkmale und zusätzliche Informationen von HTML-Tags. https://www.mediaevent.de/html/HTML-Attribute.html"],
         },
         {
             question: ["Wofür steht CSS", "Wofür wird CSS verwendet", "Welcher Tag wird verwendet um das HTML mit dem CSS zu verbinden?", "Mit welcher Klammer werden Anweisungen an CSS übergeben?", "Woraus besteht ein CSS Deklaration?"],
-            antworten_richtig: ["Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "()", "Eigenschaft und Wert"],
+            antworten_richtig: ["Cascading Style Sheets", "zur Manipulation der Darstellung von Elementen.", "link", "{}", "Eigenschaft und Wert"],
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["Color Styling Statistic", "zur Manipulation des DOMs.", "a", "[]", "Tag und href"],
-            anwser_false2: ["Command Style Sheet", "zur Manipulation des Browsers.", "p", "{}", "style und value"],
-            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            anwser_false2: ["Command Style Sheet", "zur Manipulation des Browsers.", "p", "()", "style und value"],
+            explanation: ["CSS steht für Cascading Style Sheets. https://www.checkdomain.de/hosting/lexikon/css/", "CSS wir zur Manipulation der Darstellung von Elementen verwendet. https://sketch.media/projekte/blog/ratgeber/343-was-ist-css-und-wofuer-wird-es-benutzt.html", "Um das CSS-Stylesheet ins HTML einzubinden wird der link tag verwendet. https://www.mediaevent.de/css/css-einbinden.html", "Anweisungen wird im CSS mit {} geschweiften Klammern übergeben. https://www.html-seminar.de/cascading_style_sheets_aufbau.htm", "Eine CSS Deklaration besteht aus einer Eigenschaft und einem dazugehörigen Wert. https://www.w3schools.com/css/css_syntax.asp"],
         },
         {
             question: ["Wie wird Javascript in HTML eingebunden?", "Welche Dateiendung muss das Dokument haben, das in das HTML eingebunden wird?", "Woraus besteht eine Deklaration?", "Welches dieser Antworten ist ein Typ von TS?", "Wie kann man die Skript-Ladereihenfolge verändern?"],
@@ -23,7 +23,7 @@ var Endaufgabe;
             anwser_true: [true, true, true, true, true],
             anwser_false1: ["link-tag", ".ts", "Tags, links und Attributs", "age", "content"],
             anwser_false2: ["a-tag", ".html", "Eigenschaft, Wert und Klammern", "parameter", ".log"],
-            explanation: ["noch mehr falsche antworten", "eine weitere falsche anwort", "falsche ant3", "4te falsche an", "falsche die 5te"],
+            explanation: ["Das Javascript wird über den script-Tag an das HTML übergeben. https://wiki.selfhtml.org/wiki/JavaScript/Tutorials/DOM/Einbindung_in_HTML", "Die Endung muss .js sein da das Javascript in das HTML eingebunden wird und nicht das Typescript. https://www.c-sharpcorner.com/blogs/typescript-you-first-program-in-ts", "Eine Typescript Deklaration besteht grundsätzlich aus Schlüsselwort, Bezeichnung und einem Typ. https://www.w3schools.com/typescript/typescript_simple_types.php", "Boolean ist ein Deklarations typ der true oder false ausgibt. https://www.w3schools.com/typescript/typescript_simple_types.php", "Die Ladereihen kann von dem Attribut defer beeinflusst werden, sie muss im HTML dem script tag überreicht werden. https://www.w3schools.com/tags/att_script_defer.asp"],
         }
     ];
     let startbox = document.querySelector("#start");
@@ -133,7 +133,7 @@ var Endaufgabe;
         document.querySelector('#antwort1').addEventListener('click', function () {
             playsample(sound1);
             if (Gesamt_Fragen[0].antworten_richtig) {
-                alert(Gesamt_Fragen[0].explanation[index]); //alert für richtig
+                alert("Richtig! " + Gesamt_Fragen[0].explanation[index]); //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
                 Gesamt_Fragen[0].question.splice(index, 1); // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
@@ -148,14 +148,14 @@ var Endaufgabe;
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (Gesamt_Fragen[0].anwser_false1) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[0].explanation[index]);
+                alert("Flasch! " + Gesamt_Fragen[0].explanation[index]);
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (Gesamt_Fragen[0].anwser_false2) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[0].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[0].explanation[index]);
                 inaktive();
             }
         });
@@ -170,7 +170,6 @@ var Endaufgabe;
             if (rp == 5) {
                 counter.innerHTML = rp + " von 5";
                 endbcdone();
-                alert("hi");
             }
         });
     });
@@ -184,7 +183,7 @@ var Endaufgabe;
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (Gesamt_Fragen[1].antworten_richtig) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[1].explanation[index]); //alert für richtig
+                alert("Richtig! " + Gesamt_Fragen[1].explanation[index]); //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
                 inaktive(); //buttons disalben 
@@ -199,14 +198,14 @@ var Endaufgabe;
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (Gesamt_Fragen[1].anwser_false1) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[1].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[1].explanation[index]);
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (Gesamt_Fragen[1].anwser_false2) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[1].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[1].explanation[index]);
                 inaktive();
             }
         });
@@ -221,7 +220,6 @@ var Endaufgabe;
             if (rp == 5) {
                 counter.innerHTML = rp + " von 5";
                 endbcdone();
-                alert("hi");
             }
         });
     });
@@ -235,7 +233,7 @@ var Endaufgabe;
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (Gesamt_Fragen[2].antworten_richtig) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[2].explanation[index]); //alert für richtig
+                alert("Richtig! " + Gesamt_Fragen[2].explanation[index]); //alert für richtig
                 rp++;
                 counter.innerHTML = "P: " + rp;
                 inaktive(); //buttons disalben 
@@ -250,14 +248,14 @@ var Endaufgabe;
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (Gesamt_Fragen[2].anwser_false1) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[2].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[2].explanation[index]);
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (Gesamt_Fragen[2].anwser_false2) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[2].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[2].explanation[index]);
                 inaktive();
             }
         });
@@ -273,7 +271,6 @@ var Endaufgabe;
             if (rp == 5) {
                 counter.innerHTML = rp + " von 5";
                 endbcdone();
-                alert("hi");
             }
         });
     });
@@ -285,12 +282,10 @@ var Endaufgabe;
         gesi = Math.round(Math.random() * 2);
         setall();
         weiter.disabled = true;
-        console.log(gesi);
-        console.log(index);
         document.querySelector('#antwort1').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].antworten_richtig) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[index]);
+                alert("Richtig! " + Gesamt_Fragen[gesi].explanation[index]);
                 rp++;
                 counter.innerHTML = "P:" + rp;
                 Gesamt_Fragen[gesi].question.splice(index, 1); // fragen sollen nur einmal gestellt werden, deswegen werden die richtig beantworteten
@@ -305,14 +300,14 @@ var Endaufgabe;
         document.querySelector('#antwort2').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].anwser_false1) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[index]);
+                alert("Faslch! " + Gesamt_Fragen[gesi].explanation[index]);
                 inaktive();
             }
         });
         document.querySelector('#antwort3').addEventListener('click', function () {
             if (Gesamt_Fragen[gesi].anwser_false2) {
                 playsample(sound1);
-                alert(Gesamt_Fragen[gesi].explanation[index]);
+                alert("Falsch! " + Gesamt_Fragen[gesi].explanation[index]);
                 inaktive();
             }
         });
@@ -327,13 +322,11 @@ var Endaufgabe;
             if (rp == 5) {
                 counter.innerHTML = rp + " von 5";
                 endbcdone();
-                alert("hi");
             }
         });
     });
     document.querySelector('#endbtn').addEventListener('click', function () {
         playsample(sound3);
-        console.log("hallo");
         endscr.classList.add('hidden');
         startbox.classList.remove('hidden');
         location.reload();
